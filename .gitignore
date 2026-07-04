@@ -1,0 +1,17 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# ------------------------------------------------------------------
+# PROTECCIÓN DE DATOS (opcional)
+# Si prefieres que tus datos reales NO se suban al repositorio de git,
+# quita el "#" de la siguiente línea. A partir de entonces edita tu
+# información en js/config.js localmente y súbela sólo a tu hosting.
+# Consulta el README → "Protección de tus datos".
+# ------------------------------------------------------------------
+# js/config.js
