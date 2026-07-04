@@ -1,8 +1,3 @@
-/* ==================================================================
-   AMARANTO MORELIA · Lógica de la página
-   Lee los datos desde js/config.js (window.CONFIG). No necesitas
-   editar este archivo para cambiar tu información.
-   ================================================================== */
 (function () {
   "use strict";
 
@@ -157,9 +152,9 @@
 
   /* ---------- Frases rotativas del hero ---------- */
   const frases = [
-    "Calor de hogar hasta tu escritorio.",
-    "Amor de hogar en tu oficina.",
-    "El sabor de las cocineras tradicionales, en tu escritorio.",
+    "Calor de hogar hasta tu escritorio.", "Sabor a hogar en tu oficina.", "El sazón que extrañas, en tu oficina.",
+    "Amor de hogar en tu oficina.", "El sazón de casa en tu oficina.", "Calor de hogar hasta tu escritorio.",
+    "El sabor de las cocineras tradicionales, en tu escritorio.", "Tradición casera en tu oficina.", "Amor de hogar en tu oficina.",
   ];
   let fi = 0;
   const fraseEl = document.getElementById("frase");

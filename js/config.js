@@ -1,14 +1,6 @@
-/* ==================================================================
-   AMARANTO MORELIA · Archivo de datos
-   ------------------------------------------------------------------
-   Este es el ÚNICO archivo que necesitas editar para cambiar tu
-   información: teléfono, redes sociales, dirección, mensajes, etc.
-   No hace falta tocar el HTML ni el CSS.
-   ================================================================== */
-
 window.CONFIG = {
-  /* -------- Contacto -------- */
-  whatsapp: "+524438878865",          // Número con lada de país, sin espacios
+
+  whatsapp: "+524438878865",
 
   /* -------- Redes sociales -------- */
   facebook:  "https://www.facebook.com/groups/774679299657563/user/61591311634903/",
@@ -16,7 +8,6 @@ window.CONFIG = {
   tiktok:    "https://www.tiktok.com/@amaranto.mrl",
   instagramUsuario: "@amaranto.mrl",
 
-  /* -------- Negocio / dirección (usado en el mapa y el pie de página) -------- */
   negocio: {
     nombre:      "Amaranto Morelia",
     calle:       "Artilleros de 1847 1000, Chapultepec Sur",
@@ -30,11 +21,10 @@ window.CONFIG = {
   },
 
   /* -------- Enlaces -------- */
-  menuUrl: "",                         // (Opcional) imagen del menú del día servida desde fuera
+  menuUrl: "",
   instagramFeedUrl: "https://feeds.behold.so/6SNXDt8dvnlW7w96Q7Ed",
   sitioUrl: "https://amaranto-morelia.com",
 
-  /* -------- Mensajes prellenados de WhatsApp -------- */
   mensajes: {
     hero:     "¡Hola Amaranto! 👋 Vengo de su página web y quiero hacer un pedido 😋",
     general:  "¡Hola Amaranto! 👋 Quiero hacer un pedido 😋",

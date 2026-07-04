@@ -1,14 +1,3 @@
-/* ==================================================================
-   AMARANTO MORELIA · Plantilla de datos (config.example.js)
-   ------------------------------------------------------------------
-   Este archivo es SÓLO una plantilla de ejemplo, sin datos reales.
-   Si quieres mantener tus datos fuera del repositorio de git
-   (ver README → "Protección de tus datos"):
-     1. Copia este archivo y renómbralo a  config.js
-     2. Rellénalo con tu información real
-     3. config.js quedará ignorado por git y no se subirá al repo
-   ================================================================== */
-
 window.CONFIG = {
   /* -------- Contacto -------- */
   whatsapp: "+521234567890",
