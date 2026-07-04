@@ -183,6 +183,22 @@
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
   /* ---------- Feed de Instagram (opcional) ---------- */
+  // Devuelve SIEMPRE una imagen. En los reels/videos, `mediaUrl` es un .mp4
+  // que no se puede mostrar en un <img> (se veía "roto"); la miniatura está
+  // en `thumbnailUrl` o dentro del objeto `sizes` que genera Behold.
+  const miniatura = (p) => {
+    const s = p.sizes || {};
+    const desdeSizes =
+      (s.medium && s.medium.mediaUrl) ||
+      (s.large && s.large.mediaUrl) ||
+      (s.small && s.small.mediaUrl) ||
+      (s.full && s.full.mediaUrl);
+    if (p.mediaType === "VIDEO") {
+      return p.thumbnailUrl || desdeSizes || "";
+    }
+    return desdeSizes || p.mediaUrl || p.thumbnailUrl || "";
+  };
+
   if (CONFIG.instagramFeedUrl) {
     fetch(CONFIG.instagramFeedUrl)
       .then((r) => r.json())
@@ -192,16 +208,24 @@
         const grid = document.getElementById("ig-grid");
         grid.innerHTML = "";
         posts.forEach((p) => {
+          const src = miniatura(p);
+          if (!src) return;
           const a = document.createElement("a");
           a.className = "ig-item visible reveal";
           a.href = p.permalink || CONFIG.instagram;
           a.target = "_blank";
           a.rel = "noopener";
           const img = document.createElement("img");
-          img.src = p.mediaUrl || p.thumbnailUrl;
+          img.src = src;
           img.alt = "Publicación de Instagram de Amaranto Morelia";
           img.loading = "lazy";
           a.appendChild(img);
+          if (p.mediaType === "VIDEO") {
+            const play = document.createElement("span");
+            play.className = "ig-video";
+            play.setAttribute("aria-hidden", "true");
+            a.appendChild(play);
+          }
           grid.appendChild(a);
         });
       })
