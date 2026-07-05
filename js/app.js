@@ -86,8 +86,11 @@
       clon.style.opacity = ".95";
     });
     setTimeout(() => {
-      clon.remove();
+      // Relevo sin salto: el botón real (idéntico en contenido y proporción)
+      // aparece de golpe justo donde termina el clon, y recién entonces se
+      // retira el clon. Sin transición de opacidad para que no haya parpadeo.
       alTerminar();
+      clon.remove();
       animando = false;
     }, 660);
   }
@@ -106,7 +109,13 @@
           }
           animando = true;
           btnHero.classList.add("viajando");
-          volar(btnHero, btnHeader.parentElement, () => btnHeader.classList.add("activo"));
+          volar(btnHero, btnHeader, () => {
+            // Aparición instantánea (sin fundido) para un relevo invisible con el clon.
+            btnHeader.style.transition = "none";
+            btnHeader.classList.add("activo");
+            void btnHeader.offsetWidth;
+            btnHeader.style.transition = "";
+          });
         } else if (visible && enHeader) {
           enHeader = false;
           btnHeader.classList.remove("activo");
@@ -203,29 +212,66 @@
     fetch(CONFIG.instagramFeedUrl)
       .then((r) => r.json())
       .then((data) => {
-        const posts = (data.posts || data).slice(0, 4);
+        const posts = (data.posts || data).slice(0, 6);
         if (!posts.length) return;
         const grid = document.getElementById("ig-grid");
         grid.innerHTML = "";
         posts.forEach((p) => {
           const src = miniatura(p);
           if (!src) return;
+
           const a = document.createElement("a");
           a.className = "ig-item visible reveal";
           a.href = p.permalink || CONFIG.instagram;
           a.target = "_blank";
           a.rel = "noopener";
+
+          // ---- Imagen (con indicador de video si aplica) ----
+          const media = document.createElement("span");
+          media.className = "ig-media";
           const img = document.createElement("img");
           img.src = src;
           img.alt = "Publicación de Instagram de Amaranto Morelia";
           img.loading = "lazy";
-          a.appendChild(img);
+          media.appendChild(img);
           if (p.mediaType === "VIDEO") {
             const play = document.createElement("span");
             play.className = "ig-video";
             play.setAttribute("aria-hidden", "true");
-            a.appendChild(play);
+            media.appendChild(play);
           }
+          a.appendChild(media);
+
+          // ---- Texto: prunedCaption (limpio) + caption (completo) ----
+          // prunedCaption es la versión sin hashtags/menciones finales; la
+          // mostramos como texto principal. El caption completo aparece como
+          // detalle discreto y solo si aporta algo distinto (p. ej. hashtags).
+          const pruned = (p.prunedCaption || "").trim();
+          const full = (p.caption || "").trim();
+          const principal = pruned || full;
+          let extra = "";
+          if (full && pruned && full.startsWith(pruned)) extra = full.slice(pruned.length).trim();
+          else if (full && full !== pruned) extra = full;
+
+          if (principal || extra) {
+            const cap = document.createElement("span");
+            cap.className = "ig-cap";
+            if (principal) {
+              const pr = document.createElement("span");
+              pr.className = "ig-pruned";
+              pr.textContent = principal;
+              cap.appendChild(pr);
+            }
+            if (extra) {
+              const fu = document.createElement("span");
+              fu.className = "ig-full";
+              fu.textContent = extra;
+              cap.appendChild(fu);
+            }
+            a.title = full || pruned;
+            a.appendChild(cap);
+          }
+
           grid.appendChild(a);
         });
       })
