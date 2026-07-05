@@ -121,7 +121,7 @@
       <a href="#catering">Catering</a>
     </nav>
     <div class="header-slot">
-      <a class="btn btn-wa small" id="btn-header-wa" data-wa="general" href="#">Pedir por WhatsApp</a>
+      <a class="btn btn-wa header-wa" id="btn-header-wa" data-wa="general" href="#">🟢Pedir por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -193,10 +193,12 @@
       <h2 class="serif reveal">Directo de nuestra cocina</h2>
       <p class="section-sub reveal">Lo último que hemos compartido en Instagram.</p>
       <div class="ig-grid" id="ig-grid">
-        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ph">🍛</span></a>
-        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ph">🌮</span></a>
-        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ph">🍲</span></a>
-        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ph">🥘</span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🍛</span></span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🌮</span></span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🍲</span></span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🥘</span></span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🍜</span></span></a>
+        <a class="ig-item reveal enlace-ig" href="#" aria-label="Ver en Instagram"><span class="ig-media"><span class="ph">🌯</span></span></a>
       </div>
       <div class="redes reveal">
         <p>Síguenos en nuestras redes sociales</p>
@@ -237,20 +239,22 @@
 
 <footer>
   <div class="footer-inner">
-    <div>
+    <div class="footer-col">
       <h4>Amaranto Morelia</h4>
       <p>Comida casera estilo tradicional con entrega a oficinas y domicilio en Morelia, Michoacán. Amor de hogar en tu oficina.</p>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Dónde estamos</h4>
-      <p id="footer-direccion">Chapultepec Sur, Morelia, Michoacán</p>
+      <p class="footer-dato"><span class="fc-ic" aria-hidden="true">📍</span><span id="footer-direccion">Chapultepec Sur, Morelia, Michoacán</span></p>
       <a class="footer-mapa enlace-maps" href="#" aria-label="Ver ubicación en Google Maps">Ver en Google Maps →</a>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Horario y pedidos</h4>
-      <p>Lunes a viernes<br>Servicio de comida: 1:00 pm – 4:30 pm</p>
-      <p><a data-wa="footer" href="#" id="footer-wa">WhatsApp: <span id="footer-tel"></span></a><br>
-      <a class="enlace-ig" href="#">Instagram: <span id="footer-ig"></span></a></p>
+      <p class="footer-dato"><span class="fc-ic" aria-hidden="true">🕐</span><span>Lunes a viernes · Comida de 1:00 pm a 4:30 pm</span></p>
+      <div class="footer-contacto">
+        <a class="footer-link" data-wa="footer" href="#" id="footer-wa"><span class="fc-ic" aria-hidden="true">💬</span>WhatsApp <strong id="footer-tel"></strong></a>
+        <a class="footer-link enlace-ig" href="#"><span class="fc-ic" aria-hidden="true">📸</span>Instagram <strong id="footer-ig"></strong></a>
+      </div>
     </div>
   </div>
   <p class="copy">© 2026 Amaranto Morelia · Comida estilo casero · Chapultepec Sur, Morelia, Michoacán  · Desarrollado por <a href="https://antonlogic.com/" target="_blank">AntonLogic</a></p>
